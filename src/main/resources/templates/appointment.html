@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+    ...
+    </thead>
+    <tbody>
+    <tr class="table-active">
+        <th>Date</th>
+
+    </tr>
+
+    <tr th:each="appointment:${allApointment}">
+        <td th:text="${appointment.getId()}"></td>
+    </tr>
+    <tr>
+        <th scope="row"></th>
+        <td colspan="2" class="table-active"></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

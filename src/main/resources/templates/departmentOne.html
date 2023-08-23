@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div th:each="department :${departmentDetails}">
+  <h2>department : <span th:text="${departmentDetails.getName()}"></span></h2>
+    <a href="http://localhost:9999/hospital" >
+        <button type="button" class="btn btn-danger">Back</button>
+    </a>
+<form method="get" th:action="@{'/department/' + ${hospitalID} + '/' + ${departmentDetails.getId()} + '/update'}">
+    <button type="submit">Update</button>
+</form>
+</div>
+<form th:method="DELETE" th:action="@{'/department/' + ${hospitalID} +'/' + ${departmentDetails.getId()}+ '/delete'}">
+    <input type="submit" class="btn btn-danger" th:value="Delete">
+</form>
+<form th:action="@{'/doctor/'+${hospitalID} +'/'+ ${departmentDetails.getId()}+ '/newDoc'}">
+    <button type="submit" class="btn btn-success">Add doctor</button>
+</form>
+
+<!--http://localhost:9999/doctor/2/4-->
+<form th:action="@{'/doctor/'+${hospitalId} +'/'+ ${departmentId}}">
+    <button type="submit" class="btn btn-success">Doctors</button>
+</form>
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<form th:action="@{'/department/'+${hospitalId} +'/'+ 'getDepartment/'+ ${departmentId}}">
+    <button type="submit" class="btn btn-danger">Back</button>
+</form>
+
+<table class="table">
+    <thead>
+    ...
+    </thead>
+    <tbody>
+    <tr class="table-active">
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Position</th>
+        <th>Email</th>
+    </tr>
+
+
+<!--    <form th:action="@{'/doctor/' + ${hospitalId} + '/getDoctor/' + ${departmentId} +'/' + ${doctor.getId()}}"-->
+<!--          method="GET">-->
+<!--        <button class="btn btn-warning" type="submit">Enter</button>-->
+<!--    </form>-->
+    <tr th:each="doctor:${allDoctors}">
+        <td>
+            <a th:href="@{'/doctor' + '/getDoctor/'  + ${hospitalId} +'/'+ ${departmentId} +'/' + ${doctor.getId()}}">
+                <button type="button" class="btn btn-link">
+                    <span th:text="${doctor.getFirstName()}"></span>
+                </button>
+            </a>
+        </td>
+
+        <td th:text="${doctor.getLastName()}"></td>
+        <td th:text="${doctor.getPosition()}"></td>
+        <td th:text="${doctor.getEmail()}"></td>
+    </tr>
+    <tr>
+        <th scope="row"></th>
+        <td colspan="2" class="table-active"></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</html>

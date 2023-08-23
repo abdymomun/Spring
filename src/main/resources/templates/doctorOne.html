@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<form th:action="@{'/doctor/'+${hospitalId} +'/'+ ${departmentId}}">
+    <button type="submit" class="btn btn-danger" >Back</button>
+</form>
+
+<form th:action="@{'/doctor/'+ 'updateDoc'+'/'+ ${hospitalId} +'/'+ ${departmentId} +'/'+ ${doctorId}}">
+    <button type="submit" class="btn btn-warning" >Update</button>
+</form>
+
+<form th:method="DELETE" th:action="@{'/doctor/' + ${hospitalId} +'/' + ${departmentId} + '/' + ${doctorId} +'/delete'}">
+    <input type="submit" class="btn btn-danger" th:value="Delete">
+</form>
+
+<form th:method="GET" th:action="@{'/appointment/' + ${hospitalId} + '/' + ${doctorId} +'/newApointment'}">
+    <input type="submit" class="btn btn-primary" th:value="Add apointment">
+</form>
+
+<body>
+<div class="card" style="width: 20rem;" th:each="doctor: ${doctorOne}">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${doctorOne.getFirstName()}">Firs Name</h5>
+        <p class="card-text" th:text="${doctorOne.lastName}">Doctor Last name</p>
+        <p class="card-text" th:text="${doctorOne.getPosition()}">Doctor position</p>
+        <p class="card-text" th:text="${doctorOne.getEmail()}">Doctor email</p>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</html>

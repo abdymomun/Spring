@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form class="row g-3" th:method="POST" th:action="@{/appointment + '/' + ${hospitalId} +'/' + ${doctorId} +'/saveApointment'}" th:object="${newApointment}">
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Name</label>
+        <input type="text" th:field="*{date}" class="form-control" id="inputEmail4">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+</body>
+</html>
